@@ -1,71 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wallpaper Vault</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <div class="logo">WallPaper Vault</div>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="page">
+    <header class="header">
+      <div class="header__logo">WallPaper Vault</div>
+      <button class="header__theme-toggle" id="themeBtn">Сменить тему</button>
     </header>
 
-    <main>
-        <section class="hero-banner">
-            <div class="banner-image">
-                <p>Wallpaper description</p>
-            </div>
-        </section>
-        <div class="content-box">
-            <nav class="categories">
-                <button class="category-btn active">Desktop</button>
-                <button class="category-btn">Phone</button>
-                <button class="category-btn">iOS (tendies)</button>
-                <button class="category-btn">Wallpaper Engine</button>
-            </nav>
-            <div class="tags-filter">
-                <select class="tag-select">
-                    <option value="space">Космос</option>
-                    <option value="minimalism">Минимализм</option>
-                    <option value="nature">Природа</option>
-                </select>
-            </div>
-            <section class="gallery">
-                <article class="card">
-                    <img src="https://starwalk.space/gallery/images/what-is-space/1140x641.jpg" alt="Обои 1">
-                    <div class="card-buttons">
-                        <button class="view-btn">Смотреть</button>
-                        <button class="download-btn">⬇</button>
-                    </div>
-                </article>
-                <article class="card">
-                    <img src="https://scientificrussia.ru/images/i/31qi-full.jpg" alt="Обои 2">
-                    <div class="card-buttons">
-                        <button class="view-btn">Смотреть</button>
-                        <button class="download-btn">⬇</button>
-                    </div>
-                </article>
-                <article class="card">
-                    <img src="https://scientificrussia.ru/images/y/335y-full.jpg" alt="Обои 3">
-                    <div class="card-buttons">
-                        <button class="view-btn">Смотреть</button>
-                        <button class="download-btn">⬇</button>
-                    </div>
-                </article>
-                <article class="card">
-                    <img src="https://cdn2.relax-fm.ru/proxy/vardata/modules/news/files/1/2426/news_file_2426_660fe10523a8b.jpg?w=1020&h=680&pos=center&q=100&t=1712316677" alt="Обои 4">
-                    <div class="card-buttons">
-                        <button class="view-btn">Смотреть</button>
-                        <button class="download-btn">⬇</button>
-                    </div>
-                </article>
-            </section>
+    <main class="main">
+      <section class="banner">
+        <div class="banner__image">
+          <p class="banner__text">Wallpaper description</p>
         </div>
-        </main>
+      </section>
 
-    <footer>
-        <p>WallPaper Vault. Пономарев Даниил, 2171ДБ</p>
+      <div class="content">
+        <nav class="nav-filters">
+          <button
+            class="nav-filters__btn nav-filters__btn--active"
+            data-category="Desktop"
+          >
+            Desktop
+          </button>
+          <button class="nav-filters__btn" data-category="Phone">Phone</button>
+          <button class="nav-filters__btn" data-category="iOS (tendies)">
+            iOS (tendies)
+          </button>
+          <button class="nav-filters__btn" data-category="Wallpaper Engine">
+            Wallpaper Engine
+          </button>
+        </nav>
+
+        <div class="tags">
+          <select class="tags__select" id="tagSelect">
+            <option value="space">Космос</option>
+            <option value="minimalism">Минимализм</option>
+            <option value="nature">Природа</option>
+          </select>
+        </div>
+
+        <section class="gallery" id="gallery"></section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">WallPaper Vault. Пономарев Даниил, 2171ДБ</p>
     </footer>
-</body>
+
+    <script src="script.js"></script>
+  </body>
 </html>
