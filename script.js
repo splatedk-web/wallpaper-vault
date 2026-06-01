@@ -1,16 +1,59 @@
+const generatedCosmos = Array.from({ length: 13 }, (_, i) => {
+  const id = i + 1;
+  return {
+    src: `https://raw.githubusercontent.com/splatedk-web/wallpaper-vault/main/images/desktop/cards_min_size/cosmos${id}.jpg`,
+    alt: `Космос Десктоп ${id}`,
+    category: "Desktop",
+    tag: "space",
+  };
+});
+
+const generatedNature = Array.from({ length: 20 }, (_, i) => {
+  const id = i + 1;
+  return {
+    src: `https://raw.githubusercontent.com/splatedk-web/wallpaper-vault/main/images/desktop/cards_min_size/nature${id}.jpg`,
+    alt: `Город Десктоп ${id}`,
+    category: "Desktop",
+    tag: "city",
+  };
+});
+
+const generatedCity = Array.from({ length: 20 }, (_, i) => {
+  const id = i + 1;
+  return {
+    src: `https://raw.githubusercontent.com/splatedk-web/wallpaper-vault/main/images/desktop/cards_min_size/city${id}.jpg`,
+    alt: `Природа Десктоп ${id}`,
+    category: "Desktop",
+    tag: "city",
+  };
+});
+
+const generatedMinimalism = Array.from({ length: 16 }, (_, i) => {
+  const id = i + 1;
+  return {
+    src: `https://raw.githubusercontent.com/splatedk-web/wallpaper-vault/main/images/desktop/cards_min_size/min${id}.jpg`,
+    alt: `Минимализм Десктоп ${id}`,
+    category: "Desktop",
+    tag: "minimalism",
+  };
+});
+
+const generatedNaturePhone = Array.from({ length: 25 }, (_, i) => {
+  const id = i + 1;
+  return {
+    src: `https://raw.githubusercontent.com/splatedk-web/wallpaper-vault/main/images/phone/cards/nature${id}.jpg`,
+    alt: `Минимализм Мобильные ${id}`,
+    category: "Phone",
+    tag: "nature",
+  };
+});
+
 const wallpapers = [
-  {
-    src: "https://starwalk.space/gallery/images/what-is-space/1140x641.jpg",
-    alt: "Космос Десктоп",
-    category: "Desktop",
-    tag: "space",
-  },
-  {
-    src: "https://scientificrussia.ru/images/i/31qi-full.jpg",
-    alt: "Космос Десктоп 2",
-    category: "Desktop",
-    tag: "space",
-  },
+  ...generatedCosmos,
+  ...generatedNature,
+  ...generatedCity,
+  ...generatedNaturePhone,
+  ...generatedMinimalism,
   {
     src: "https://scientificrussia.ru/images/y/335y-full.jpg",
     alt: "Космос Мобильные",
@@ -52,7 +95,7 @@ function renderGallery() {
     card.innerHTML = `
             <img class="card__img" src="${item.src}" alt="${item.alt}">
             <div class="card__actions">
-                <button class="card__btn card__btn--view">Смотреть</button>
+                <button class="card__btn card__btn--view">Посмотреть</button>
                 <button class="card__btn card__btn--download">⬇</button>
             </div>
         `;
