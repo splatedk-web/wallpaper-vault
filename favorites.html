@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Избранное — Wallpaper Vault</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="page">
+    <header class="header">
+      <div class="header__logo">
+        <a href="index.html" style="color: inherit; text-decoration: none"
+          >WallPaper Vault</a
+        >
+      </div>
+
+      <div class="header__links">
+        <a href="index.html" class="header__link">
+          <i class="fa-solid fa-arrow-left"></i> На главную
+        </a>
+      </div>
+
+      <button
+        class="header__theme-toggle"
+        id="themeBtn"
+        aria-label="Сменить тему"
+      >
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </header>
+
+    <main class="main">
+      <div class="content">
+        <h1 style="margin-top: 0">
+          <i class="fa-solid fa-heart" style="color: #ff4757"></i> Моё избранное
+        </h1>
+
+        <section class="gallery" id="gallery"></section>
+      </div>
+    </main>
+
+    <div id="previewModal" class="modal">
+      <div class="modal__content">
+        <button class="modal__close" id="modalCloseBtn">&times;</button>
+        <div class="modal__body">
+          <div class="modal__preview-container">
+            <img id="modalImg" src="" alt="Превью" class="modal__img" />
+            <button
+              id="modalFullscreenBtn"
+              class="modal__fullscreen-btn"
+              title="Примерить"
+            >
+              <i class="fa-solid fa-expand"></i> Примерить
+            </button>
+          </div>
+          <div class="modal__info">
+            <h2 id="modalTitle" class="modal__title">Название обоев</h2>
+            <div class="modal__actions">
+              <button id="modalFavBtn" class="modal__btn modal__btn--fav">
+                <i class="fa-regular fa-heart"></i> В избранное
+              </button>
+              <button
+                id="modalDownloadBtn"
+                class="modal__btn modal__btn--download"
+              >
+                <i class="fa-solid fa-download"></i> Скачать оригинал
+              </button>
+            </div>
+            <div class="modal__instructions">
+              <h3><i class="fa-solid fa-book"></i> Как установить?</h3>
+              <div
+                id="modalLinksContainer"
+                class="modal__links-container"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer__text">WallPaper Vault. Пономарев Даниил, 2171ДБ</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

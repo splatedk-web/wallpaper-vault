@@ -4,12 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wallpaper Vault</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="page">
     <header class="header">
       <div class="header__logo">WallPaper Vault</div>
-      <button class="header__theme-toggle" id="themeBtn">Сменить тему</button>
+
+      <div class="header__links">
+        <a href="instructions-win.html" class="header__link"
+          ><i class="fa-brands fa-windows"></i> Windows</a
+        >
+        <a href="instructions-lin.html" class="header__link"
+          ><i class="fa-brands fa-linux"></i> Linux</a
+        >
+        <a href="instructions-phone.html" class="header__link"
+          ><i class="fa-solid fa-mobile-screen-button"></i> Phone</a
+        >
+        <a href="instructions-ios.html" class="header__link"
+          ><i class="fa-brands fa-apple"></i> iOS (tendies)</a
+        >
+        <a href="instructions-we.html" class="header__link"
+          ><i class="fa-solid fa-wand-magic-sparkles"></i> Wallpaper Engine</a
+        >
+        <div class="header__links">
+          <a href="favorites.html" class="header__link" style="color: #ff4757">
+            <i class="fa-solid fa-heart"></i> Избранное
+          </a>
+        </div>
+      </div>
+
+      <button
+        class="header__theme-toggle"
+        id="themeBtn"
+        aria-label="Сменить тему"
+      >
+        <i class="fa-solid fa-moon"></i>
+      </button>
     </header>
 
     <main class="main">
@@ -26,14 +60,16 @@
             class="nav-filters__btn nav-filters__btn--active"
             data-category="Desktop"
           >
-            Desktop
+            <i class="fa-solid fa-desktop"></i> Desktop
           </button>
-          <button class="nav-filters__btn" data-category="Phone">Phone</button>
+          <button class="nav-filters__btn" data-category="Phone">
+            <i class="fa-solid fa-mobile-screen-button"></i> Phone
+          </button>
           <button class="nav-filters__btn" data-category="iOS (tendies)">
-            iOS (tendies)
+            <i class="fa-brands fa-apple"></i> iOS (tendies)
           </button>
           <button class="nav-filters__btn" data-category="Wallpaper Engine">
-            Wallpaper Engine
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Wallpaper Engine
           </button>
         </nav>
 
@@ -54,10 +90,54 @@
       </div>
     </main>
 
+    <div id="previewModal" class="modal">
+      <div class="modal__content">
+        <button class="modal__close" id="modalCloseBtn">&times;</button>
+
+        <div class="modal__body">
+          <div class="modal__preview-container">
+            <img id="modalImg" src="" alt="Превью" class="modal__img" />
+            <button
+              id="modalFullscreenBtn"
+              class="modal__fullscreen-btn"
+              title="Примерить (на весь экран)"
+            >
+              <i class="fa-solid fa-expand"></i> Примерить
+            </button>
+          </div>
+
+          <div class="modal__info">
+            <h2 id="modalTitle" class="modal__title">Название обоев</h2>
+
+            <div class="modal__actions">
+              <button id="modalFavBtn" class="modal__btn modal__btn--fav">
+                <i class="fa-regular fa-heart"></i> В избранное
+              </button>
+              <button
+                id="modalDownloadBtn"
+                class="modal__btn modal__btn--download"
+              >
+                <i class="fa-solid fa-download"></i> Скачать оригинал
+              </button>
+            </div>
+
+            <div class="modal__instructions">
+              <h3><i class="fa-solid fa-book"></i> Как установить?</h3>
+              <div
+                id="modalLinksContainer"
+                class="modal__links-container"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="footer">
       <p class="footer__text">WallPaper Vault. Пономарев Даниил, 2171ДБ</p>
     </footer>
 
+    <script src="data.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
