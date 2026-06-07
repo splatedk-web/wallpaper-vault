@@ -4,10 +4,6 @@ const filterBtns = document.querySelectorAll(".nav-filters__btn");
 const tagSelect = document.getElementById("tagSelect");
 const gallery = document.getElementById("gallery");
 
-let currentCategory = "Desktop";
-let currentTag = "space";
-let currentWallpaper = null;
-
 const previewModal = document.getElementById("previewModal");
 const modalCloseBtn = document.getElementById("modalCloseBtn");
 const modalImg = document.getElementById("modalImg");
@@ -19,9 +15,14 @@ const modalLinksContainer = document.getElementById("modalLinksContainer");
 
 const onFavorites = window.location.pathname.includes("favorites.html");
 
+let currentCategory = "Desktop";
+let currentTag = "space";
+let currentWallpaper = null;
+
 let favorites = JSON.parse(localStorage.getItem("wallpapers_favs")) || [];
 
 const savedTheme = localStorage.getItem("theme");
+
 if (savedTheme === "light") {
   pageBody.classList.add("light-theme");
   const icon = themeBtn.querySelector("i");
@@ -124,20 +125,20 @@ function openModal(item, fullSizeSrc) {
 
   if (currentCategory === "Desktop") {
     modalLinksContainer.innerHTML = `
-      <a href="instructions-win.html" class="header__link"><i class="fa-brands fa-windows"></i> Инструкция для Windows</a>
-      <a href="instructions-lin.html" class="header__link"><i class="fa-brands fa-linux"></i> Инструкция для Linux</a>
+      <a href="guides/instructions-win.html" class="header__link"><i class="fa-brands fa-windows"></i> Инструкция для Windows</a>
+      <a href="guides/instructions-lin.html" class="header__link"><i class="fa-brands fa-linux"></i> Инструкция для Linux</a>
     `;
   } else if (currentCategory === "Phone") {
     modalLinksContainer.innerHTML = `
-      <a href="instructions-phone.html" class="header__link"><i class="fa-solid fa-mobile-screen-button"></i> Инструкция для Android/iOS</a>
+      <a href="guides/instructions-phone.html" class="header__link"><i class="fa-solid fa-mobile-screen-button"></i> Инструкция для Android/iOS</a>
     `;
   } else if (currentCategory === "iOS (tendies)") {
     modalLinksContainer.innerHTML = `
-      <a href="instructions-ios.html" class="header__link"><i class="fa-brands fa-apple"></i> Перейти к инструкции iOS</a>
+      <a href="guides/instructions-ios.html" class="header__link"><i class="fa-brands fa-apple"></i> Перейти к инструкции iOS</a>
     `;
   } else if (currentCategory === "Wallpaper Engine") {
     modalLinksContainer.innerHTML = `
-      <a href="instructions-we.html" class="header__link"><i class="fa-solid fa-wand-magic-sparkles"></i> Инструкция Wallpaper Engine</a>
+      <a href="guides/instructions-we.html" class="header__link"><i class="fa-solid fa-wand-magic-sparkles"></i> Инструкция Wallpaper Engine</a>
     `;
   }
 
@@ -160,7 +161,7 @@ modalFavBtn.addEventListener("click", () => {
       icon: "info",
       title: "Удалено из избранного",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 2000,
       timerProgressBar: true,
     });
   } else {
@@ -174,7 +175,7 @@ modalFavBtn.addEventListener("click", () => {
       icon: "success",
       title: "Добавлено в избранное!",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 2000,
       timerProgressBar: true,
     });
   }
@@ -282,7 +283,7 @@ function downloadImage(e, url, filename) {
     icon: "success",
     title: "Скачивание началось...",
     showConfirmButton: false,
-    timer: 1500,
+    timer: 2000,
   });
 
   fetch(url)
