@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="page">
+    <header class="header">
+      <div class="header__logo">JS-Приложение</div>
+    </header>
+    // сделал отдельно потому что не связано с тематикой сайта.
+    <main class="main">
+      <div class="content" style="max-width: 500px; margin: 0 auto">
+        <h2 style="margin-top: 0">
+          <i class="fa-solid fa-calculator"></i> Калькулятор вклада
+        </h2>
+        <p>Расчет сложных процентов (капитализация).</p>
+
+        <form
+          id="calcForm"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+          "
+        >
+          <div>
+            <label style="display: block; margin-bottom: 5px"
+              >Начальная сумма (₽):</label
+            >
+            <input
+              type="number"
+              id="amount"
+              required
+              style="
+                width: 100%;
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid var(--border);
+                background: var(--bg);
+                color: var(--text);
+              "
+              min="1000"
+            />
+          </div>
+
+          <div>
+            <label style="display: block; margin-bottom: 5px"
+              >Процентная ставка (% годовых):</label
+            >
+            <input
+              type="number"
+              id="rate"
+              required
+              style="
+                width: 100%;
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid var(--border);
+                background: var(--bg);
+                color: var(--text);
+              "
+              step="0.1"
+              min="0.1"
+            />
+          </div>
+
+          <div>
+            <label style="display: block; margin-bottom: 5px"
+              >Срок (лет):</label
+            >
+            <input
+              type="number"
+              id="years"
+              required
+              style="
+                width: 100%;
+                padding: 10px;
+                border-radius: 8px;
+                border: 1px solid var(--border);
+                background: var(--bg);
+                color: var(--text);
+              "
+              min="1"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="card__btn"
+            style="padding: 12px; font-size: 16px"
+          >
+            Рассчитать
+          </button>
+        </form>
+
+        <div
+          id="result"
+          style="
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--accent);
+            display: none;
+          "
+        ></div>
+      </div>
+    </main>
+
+    <script>
+      document
+        .getElementById("calcForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const amount = parseFloat(document.getElementById("amount").value);
+          const rate = parseFloat(document.getElementById("rate").value) / 100;
+          const years = parseInt(document.getElementById("years").value);
+
+          //  finalAmount = P(1 + r)^t
+          const finalAmount = amount * Math.pow(1 + rate, years);
+          const profit = finalAmount - amount;
+
+          const resultDiv = document.getElementById("result");
+          resultDiv.style.display = "block";
+          resultDiv.innerHTML = `
+          <strong>Итоговая сумма:</strong> ${finalAmount.toFixed(2)} ₽<br>
+          <strong>Чистая прибыль:</strong> <span style="color: #4cd137;">+${profit.toFixed(2)} ₽</span>
+        `;
+        });
+    </script>
+  </body>
+</html>

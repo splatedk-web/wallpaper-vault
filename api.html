@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="page">
+    <header class="header">
+      <div class="header__logo">API</div>
+    </header>
+    // сделал отдельно потому что не связано с тематикой сайта.
+    <main class="main">
+      <div class="content" style="max-width: 600px; margin: 0 auto">
+        <h2 style="text-align: center">Статистика проектов GitHub</h2>
+        <p style="text-align: center; opacity: 0.8">
+          Вставьте ссылку на API любого репозитория GitHub:
+        </p>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+          "
+        >
+          <input
+            type="text"
+            id="apiInput"
+            value="https://api.github.com/repos/twbs/bootstrap"
+            style="
+              width: 100%;
+              padding: 12px;
+              border-radius: 8px;
+              border: 1px solid var(--border);
+              background: var(--bg);
+              color: var(--text);
+            "
+          />
+          <button
+            id="loadBtn"
+            class="card__btn"
+            style="padding: 12px; font-size: 16px"
+          >
+            Получить данные
+          </button>
+        </div>
+
+        <div
+          id="resultText"
+          style="
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--accent);
+            min-height: 50px;
+            margin-top: 10px;
+            line-height: 1.6;
+          "
+        >
+          Нажмите кнопку для загрузки данных.
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const button = document.getElementById("loadBtn");
+      const resultBlock = document.getElementById("resultText");
+      const apiInput = document.getElementById("apiInput");
+
+      button.addEventListener("click", function () {
+        resultBlock.innerText = "Загрузка...";
+
+        const url = apiInput.value.trim();
+
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            resultBlock.innerHTML = `
+              <strong>Название репозитория:</strong> ${data.name}<br>
+              <strong>Описание:</strong> ${data.description || "Нет описания"}<br>
+              <strong>Количество звезд ⭐:</strong> ${data.stargazers_count}<br>
+              <strong>Количество форков 🍴:</strong> ${data.forks_count}
+            `;
+          })
+          .catch((error) => {
+            resultBlock.innerText =
+              "Ошибка! Проверьте правильность ссылки на API GitHub.";
+          });
+      });
+    </script>
+  </body>
+</html>
