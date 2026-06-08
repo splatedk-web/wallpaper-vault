@@ -100,7 +100,7 @@ function renderGallery() {
 function openModal(item, fullSizeSrc) {
   currentWallpaper = item;
 
-  if (fullSizeSrc.includes(".tendies")) {
+  if (fullSizeSrc.includes(".tendies") || fullSizeSrc.includes(".zip")) {
     modalImg.src = item.src;
   } else {
     modalImg.src = fullSizeSrc;
